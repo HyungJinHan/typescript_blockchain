@@ -1,0 +1,22 @@
+{
+  "name": "typescript_blockchain",
+  "version": "1.0.0",
+  "description": "TypeScript를 사용하여 노마드코더의 블록체인 강의 연습용입니다.",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HyungJinHan/typescript_blockchain.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HyungJinHan/typescript_blockchain/issues"
+  },
+  "homepage": "https://github.com/HyungJinHan/typescript_blockchain#readme",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
+}
