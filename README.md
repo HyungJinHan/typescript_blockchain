@@ -20,7 +20,6 @@
 <br>
 
 - `JavaScript` 파일이 생성될 디렉토리를 지정하는 설정
-  - `TypeScript`는 컴파일러로, `.ts` 파일들을 일반적인 `JavaScript`로 컴파일시켜줌
 
   ```JSON
   {
@@ -29,6 +28,8 @@
     }
   }
   ```
+
+    > `TypeScript`는 컴파일러로, `.ts` 파일들을 일반적인 `JavaScript`로 컴파일시켜줌
 
 <br>
 
