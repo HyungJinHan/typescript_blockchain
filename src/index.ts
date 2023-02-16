@@ -7,3 +7,6 @@ class Block {
     return 'Hello World';
   }
 }
+
+localStorage.getItem('key');
+// Storage.getItem(key: string): string

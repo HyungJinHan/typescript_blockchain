@@ -65,27 +65,16 @@
       }
     }
     ```
-    > 쉽게 말해 `TypeScript`에서 `ES6` 버전의 `JavaScript` 문법에 관련된 자동완성 기능을 제공
+    > 쉽게 말해 `TypeScript`에서 `ES6` 버전의 `JavaScript` 문법에 관련된 모든 이벤트와 메소드의 자동 완성 기능을 제공
+    >
+    >
+    > 위와 같이 `lib` 설정을 `DOM`으로 하지 않을 시, `TypeScript`에서 `JavaScript`의 문법을 찾지 못해 에러남
 
-  <br>
+<br>
 
-### 실행을 통해 컴파일 된 결과 (`ES3` 버전)
 
-  - 실행시킬 `index.ts` 코드
-    ```TS
-    const hello = () => 'hi';
-    ```
-
-  - 컴파일되어 생성된 `index.js` 코드
-    ```JS
-    var hello = function () { return 'hi'; };
-    // 호환성을 위해 낮은 버전의 JavaScript 코드로 자동 컴파일됨
-    ```
-
-  <br>
-
-  ### 컴파일 버전 변경법
-
+### 실행 결과 & 컴파일 버전 변경법
+  
   - 컴파일될 `JavaScript`의 버전 설정
 
     ```JSON
@@ -99,15 +88,38 @@
 
   <br>
 
-### `ES6` 버전으로 변경 후 컴파일 한 결과
+-  실행을 통해 컴파일 된 결과 (`ES3` 버전)
 
-  - 실행시킬 `index.ts` 코드
-    ```TS
-    const hello = () => 'hi';
-    ```
+    <details>
+    <summary><i>결과 보기</i></summary>
 
-  - 컴파일되어 생성된 `index.js` 코드
-    ```JS
-    const hello = () => 'hi';
-    // ES6 버전에서 호환되는 const로 변경
-    ```
+    - 실행시킬 `index.ts` 코드
+      ```TS
+      const hello = () => 'hi';
+      ```
+
+    - 컴파일되어 생성된 `index.js` 코드
+      ```JS
+      var hello = function () { return 'hi'; };
+      // 호환성을 위해 낮은 버전의 JavaScript 코드로 자동 컴파일됨
+      ```
+    </details>
+
+<br>
+
+- `ES6` 버전으로 변경 후 컴파일 한 결과
+
+    <details>
+    <summary><i>결과 보기</i></summary>
+
+    - 실행시킬 `index.ts` 코드
+      ```TS
+      const hello = () => 'hi';
+      ```
+
+    - 컴파일되어 생성된 `index.js` 코드
+      ```JS
+      const hello = () => 'hi';
+      // ES6 버전에서 호환되는 const로 변경
+      ```
+    </details>
