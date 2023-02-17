@@ -111,7 +111,7 @@
     }
     ```
 
-  <br>
+<br>
 
 -  실행을 통해 컴파일 된 결과 (`ES3` 버전)
 
@@ -148,3 +148,49 @@
       // ES6 버전에서 호환되는 const로 변경
       ```
     </details>
+
+<br>
+
+# `@ts-check` & `JSDoc`
+
+## `@ts-check`
+
+- `JavaScript` 파일에서 `TypeScript` 방식으로 타입 보호를 가능하게 하는 방식
+
+<br>
+
+## `JSDoc`
+
+- 해당 함수의 메소드 및 타입, 리턴값을 확인 할 수 있는 주석 방식
+
+<br>
+
+## `@ts-check` & `JSDoc` 사용
+
+- 사용 예제
+
+  ```JS
+  // @ts-check
+  /**
+   * Initializes the project (JSDoc)
+   * @param {object} config 
+   * @param {boolean} config.debug
+   * @param {string} config.url
+   * @returns boolean
+   */
+  export function init(config) {
+    return true;
+  }
+  ```
+
+<br>
+
+- 해당 함수의 주석 내용
+
+  ```
+  Initializes the project (JSDoc)
+
+  @param config
+
+  @returns — boolean
+  ```
