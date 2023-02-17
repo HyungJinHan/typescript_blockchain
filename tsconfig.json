@@ -10,5 +10,6 @@
       "DOM"
     ],
     "strict": true,
+    "allowJs": true,
   }
 }

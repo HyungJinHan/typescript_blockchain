@@ -72,6 +72,31 @@
 
 <br>
 
+  - `strict` 설정을 통해 에러 부분 표시 설정
+
+    ```JSON
+    {
+      "compilerOptions": {
+        "strict": true
+      }
+    }
+    ```
+    > 기본적으로 `false`로 지정되어 있으며, `true`를 통해 에러를 표시
+
+<br>
+
+  - `allowJs`를 통해 `TypeScript` 내에서 `JavaScript`를 허용하는 설정
+
+    ```JSON
+    {
+      "compilerOptions": {
+        "allowJs": true
+      }
+    }
+    ```
+    > 사용할 `package`가  `JavaScript` 파일일 경우, `xxx.d.ts`로 모듈을 불러와 사용해야 하지만, 위의 설정을 통해 `JavaScript` 파일 자체를 불러올 수 있도록 함
+
+<br>
 
 ### 실행 결과 & 컴파일 버전 변경법
   
