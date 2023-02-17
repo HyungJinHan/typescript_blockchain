@@ -1,5 +1,5 @@
-# TypeScript Blockchian 예제
-### TypeScript를 사용하여 노마드코더의 블록체인 강의 연습용입니다.
+# `TypeScript Blockchian` 예제
+### `TypeScript`를 사용하여 노마드 코더의 블록체인 강의 연습용입니다.
 
 <br>
 
@@ -118,6 +118,8 @@
     <details>
     <summary><i>결과 보기</i></summary>
 
+    <br>
+
     - 실행시킬 `index.ts` 코드
       ```TS
       const hello = () => 'hi';
@@ -136,6 +138,8 @@
 
     <details>
     <summary><i>결과 보기</i></summary>
+
+    <br>
 
     - 실행시킬 `index.ts` 코드
       ```TS
@@ -244,3 +248,129 @@
 ### `data`
 
   - 거래내역과 같은 다양한 정보들을 저장
+
+<br>
+
+## 블록체인의 해시코드 생성 원리
+
+  - `hash` : 해당 데이터의 해시코드
+
+  - `prevHash` : 해당 데이터의 이전 해시코드 (이전 해시코드가 없을 경우 빈 값)
+  
+  - `height` : 해당 블록체인의 번호 (`index` 번호와 같음)
+
+  - `data` : 해당 블록체인의 이름과 같은 정보
+
+  > `crypto` 라이브러리를 활용해 `hash`를 생성함
+
+<br>
+
+## 블록체인 생성 상세 코드
+
+  <details>
+  <summary><i>코드 보기</i></summary>
+
+  <br>
+
+  - 블록체인 해시코드 생성 코드
+
+    ```JS
+    class Block implements BlockShape {
+      public hash: string;
+
+      // 초기값 지정
+      constructor(
+        public prevHash: string,
+        public height: number,
+        public data: string
+      ) {
+        this.hash = Block.calculateHash(prevHash, height, data);
+      }
+
+      // 해시코드 생성을 위한 작업
+      static calculateHash(prevHash: string, height: number, data: string) {
+        const toHash = `${prevHash}${height}${data}`;
+        return crypto.createHash('sha256').update(toHash).digest('hex');
+      }
+    }
+    ```
+
+  - 블록체인 추가
+
+    ```JS
+    class Blockchain {
+      private blocks: Block[];
+
+      constructor() {
+        this.blocks = [];
+      }
+
+      private getPrevHash() {
+        if (this.blocks.length === 0) {
+          return ''
+        }
+
+        return this.blocks[this.blocks.length - 1].hash;
+      }
+
+      public addBlock(data: string) {
+        const newBlock = new Block(this.getPrevHash(), this.blocks.length + 1, data);
+        this.blocks.push(newBlock);
+      }
+
+      public getBlocks() {
+        return [...this.blocks];
+        // 배열 내부의 데이터만을 가지고 새로운 배열을 리턴해줌
+      }
+    }
+    ```
+
+  - 블록체인 생성
+
+    ```JS
+    const blockchain = new Blockchain();
+
+    blockchain.addBlock('First One');
+    blockchain.addBlock('Second One');
+    blockchain.addBlock('Third One');
+
+    blockchain.getBlocks().push(new Block('Hacking', 111111, 'Hacking Success'));
+    // 이렇게 외부에서 배열에 추가할 수 없도록 작업이 필요함 (보안 상의 이유)
+    // return [...this.blocks]; 작업을 통해 외부의 데이터를 추가하지 X
+    ```
+    </details>
+
+    <br>
+
+    <details>
+    <summary><i>블록체인 결과 확인</i></summary>
+
+    <br>
+  
+    ```JS
+    console.log(blockchain.getBlocks());
+    ```
+
+    ```bash
+    [
+      Block {
+        prevHash: '',
+        height: 1,
+        data: 'First One',
+        hash: '4d32c045dd6fbe1fd111729e13ebdb2d7af93136fbaab424dea0933020387050'
+      },
+      Block {
+        prevHash: '4d32c045dd6fbe1fd111729e13ebdb2d7af93136fbaab424dea0933020387050',
+        height: 2,
+        data: 'Second One',
+        hash: 'f60aec494df596e7a000fd42969063aa3ba1fb6c30887724a98f73b75f271382'
+      },
+      Block {
+        prevHash: 'f60aec494df596e7a000fd42969063aa3ba1fb6c30887724a98f73b75f271382',
+        height: 3,
+        data: 'Third One',
+        hash: 'e9f8c7258d2d9e4675ead87492f8eeb6ada0496176adec8b4fde6a4dcff935b4'
+      }
+    ]
+    ```
+    </details>

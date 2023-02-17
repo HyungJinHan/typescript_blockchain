@@ -63,6 +63,7 @@ const blockchain = new Blockchain();
 blockchain.addBlock('First One');
 blockchain.addBlock('Second One');
 blockchain.addBlock('Third One');
+blockchain.addBlock('Fourth One');
 
 blockchain.getBlocks().push(new Block('Hacking', 111111, 'Hacking Success'));
 // 이렇게 외부에서 배열에 추가할 수 없도록 작업이 필요함 (보안 상의 이유)
