@@ -1,12 +1,7 @@
-class Block {
-  constructor(
-    private data: string
-  ) { }
+import { init, exit } from 'myPackage';
 
-  static hello() {
-    return 'Hello World';
-  }
-}
+init({
+  url: 'true'
+});
 
-localStorage.getItem('key');
-// Storage.getItem(key: string): string
+exit(1);
